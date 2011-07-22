@@ -12,4 +12,10 @@ module Carta
       end
     end
   end
+  
+  class Row
+    def self.parse(pattern)
+      [Carta::Stitch.new(:sc)]
+    end
+  end
 end

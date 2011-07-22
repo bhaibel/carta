@@ -16,3 +16,15 @@ describe Carta::Stitch do
     stitch.slug.should == :INVALID_STITCH
   end
 end
+
+describe Carta::Row do
+  describe '.parse' do
+    it 'converts a string containing a single stitch abbreviation into a single-element array containing the correct Carta::Stitch' do
+      result = Carta::Row.parse('sc')
+      result.class.should == Array
+      result.length.should == 1
+      result[0].class.should == Carta::Stitch
+      result[0].slug.should == :sc
+    end
+  end
+end
