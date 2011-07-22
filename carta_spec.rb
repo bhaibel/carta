@@ -38,5 +38,19 @@ describe Carta::Row do
         stitch.slug.should == :tr
       end
     end
+    
+    it 'converts a string containing two comma-delimited stitch abbreviations into a two-element array' do
+      result = Carta::Row.parse('sc,hdc')
+      result.class.should == Array
+      result.length.should == 2
+    end
+    
+    it 'converts a string containing three whitespace-delimited stitch abbreviations into a three-element array' do
+      # three elements used so we could test against two
+      # different types of whitespace
+      result = Carta::Row.parse('sc hdc dc')
+      result.class.should == Array
+      result.length.should == 3
+    end
   end
 end

@@ -15,19 +15,20 @@ module Carta
   
   class Row
     def self.parse(pattern)
-      if count_match_data = pattern.match(/^[0-9]+/)
-        # slices the beginning number from the string and throws
-        # its converted-to-integer-form into a variable
-        count = pattern.slice!(count_match_data[0]).to_i
-      else
-        count = 1
+      pattern.split(',').inject([]) do |result, element|
+        if count_match_data = element.match(/^[0-9]+/)
+          # slices the beginning number from the string and throws
+          # its converted-to-integer-form into a variable
+          count = element.slice!(count_match_data[0]).to_i
+        else
+          count = 1
+        end
+        stitch_name = element.to_sym
+        count.times do
+          result << Stitch.new(stitch_name)
+        end
+        result
       end
-      stitch_name = pattern.to_sym
-      result = []
-      count.times do
-        result << Stitch.new(stitch_name)
-      end
-      result
     end
   end
 end
