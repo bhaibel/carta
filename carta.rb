@@ -15,7 +15,7 @@ module Carta
   
   class Row
     def self.parse(pattern)
-      pattern.split(',').inject([]) do |result, element|
+      pattern.split(%r{,|\s+}).inject([]) do |result, element|
         if count_match_data = element.match(/^[0-9]+/)
           # slices the beginning number from the string and throws
           # its converted-to-integer-form into a variable

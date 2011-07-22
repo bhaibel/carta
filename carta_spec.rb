@@ -48,7 +48,7 @@ describe Carta::Row do
     it 'converts a string containing three whitespace-delimited stitch abbreviations into a three-element array' do
       # three elements used so we could test against two
       # different types of whitespace
-      result = Carta::Row.parse('sc hdc dc')
+      result = Carta::Row.parse("sc   hdc\tdc")
       result.class.should == Array
       result.length.should == 3
     end
