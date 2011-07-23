@@ -15,7 +15,8 @@ module Carta
   
   class Row
     def self.parse(pattern)
-      pattern.split(%r{,|\s+}).inject([]) do |result, element|
+      result = []
+      pattern.split(%r{,|\s+}).each do |element|
         if count_match_data = element.match(/^[0-9]+/)
           # slices the beginning number from the string and throws
           # its converted-to-integer-form into a variable
@@ -27,8 +28,8 @@ module Carta
         count.times do
           result << Stitch.new(stitch_name)
         end
-        result
       end
+      result
     end
   end
 end
