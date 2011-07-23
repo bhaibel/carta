@@ -1,3 +1,5 @@
+require 'rasem'
+
 module Carta
   class Stitch
     STITCH_ABBREVIATIONS = [:sc, :hdc, :dc, :tr]
