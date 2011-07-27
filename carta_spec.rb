@@ -15,6 +15,13 @@ describe Carta::Stitch do
     stitch = Carta::Stitch.new(:abracadabra)
     stitch.slug.should == :INVALID_STITCH
   end
+  
+  describe "#mark" do
+    it 'returns a set of rasem instructions'
+    it 'accurately describes the shape of the stitch'
+    it 'accurately describes the position of the stitch'
+    it 'accurately describes the size of the stitch'
+  end
 end
 
 describe Carta::Row do
