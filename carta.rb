@@ -13,6 +13,13 @@ module Carta
         @slug = :INVALID_STITCH
       end
     end
+    
+    def mark
+      Proc.new do
+        line 0, 0, 1, 1
+        line 0, 1, 1, 0
+      end
+    end
   end
   
   class Row

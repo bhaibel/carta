@@ -17,8 +17,18 @@ describe Carta::Stitch do
   end
   
   describe "#mark" do
-    it 'returns a set of rasem instructions'
-    it 'accurately describes the shape of the stitch'
+    it 'returns a set of rasem instructions' do
+      stitch = Carta::Stitch.new(:sc)
+      Rasem::SVGImage.new(100, 100, &(stitch.mark)).
+      should_not raise_error
+    end
+    
+    it 'accurately describes the shape of the stitch' do
+      stitch = Carta::Stitch.new(:sc)
+      Rasem::SVGImage.new(100, 100, &(stitch.mark)).
+        output.scan(%r{<line}).
+        length.should == 2
+    end
     it 'accurately describes the position of the stitch'
     it 'accurately describes the size of the stitch'
   end
